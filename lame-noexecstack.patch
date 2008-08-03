@@ -1,0 +1,77 @@
+diff -ur lame-3.97.orig/libmp3lame/i386/choose_table.nas lame-3.97/libmp3lame/i386/choose_table.nas
+--- lame-3.97.orig/libmp3lame/i386/choose_table.nas	2000-10-27 13:19:05.000000000 +0200
++++ lame-3.97/libmp3lame/i386/choose_table.nas	2007-02-15 09:14:07.000000000 +0100
+@@ -431,3 +431,7 @@
+ 	ret
+ 
+ 	end
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur lame-3.97.orig/libmp3lame/i386/cpu_feat.nas lame-3.97/libmp3lame/i386/cpu_feat.nas
+--- lame-3.97.orig/libmp3lame/i386/cpu_feat.nas	2003-11-10 16:41:00.000000000 +0100
++++ lame-3.97/libmp3lame/i386/cpu_feat.nas	2007-02-15 09:13:58.000000000 +0100
+@@ -105,3 +105,7 @@
+ 	ret
+         
+         end
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur lame-3.97.orig/libmp3lame/i386/fft.nas lame-3.97/libmp3lame/i386/fft.nas
+--- lame-3.97.orig/libmp3lame/i386/fft.nas	2000-10-04 14:13:26.000000000 +0200
++++ lame-3.97/libmp3lame/i386/fft.nas	2007-02-15 09:14:34.000000000 +0100
+@@ -265,3 +265,7 @@
+ 	pop	esi
+ 	pop	ebx
+ 	ret
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur lame-3.97.orig/libmp3lame/i386/fft3dn.nas lame-3.97/libmp3lame/i386/fft3dn.nas
+--- lame-3.97.orig/libmp3lame/i386/fft3dn.nas	2006-09-24 15:53:33.000000000 +0200
++++ lame-3.97/libmp3lame/i386/fft3dn.nas	2007-02-15 09:14:18.000000000 +0100
+@@ -275,3 +275,7 @@
+ 	add	esp,16
+ 	popd	ebp, ebx, esi, edi
+ endproc
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur lame-3.97.orig/libmp3lame/i386/fftfpu.nas lame-3.97/libmp3lame/i386/fftfpu.nas
+--- lame-3.97.orig/libmp3lame/i386/fftfpu.nas	2000-10-04 14:13:26.000000000 +0200
++++ lame-3.97/libmp3lame/i386/fftfpu.nas	2007-02-15 09:14:35.000000000 +0100
+@@ -617,3 +617,7 @@
+ endproc
+ 
+ 	end
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur lame-3.97.orig/libmp3lame/i386/fftsse.nas lame-3.97/libmp3lame/i386/fftsse.nas
+--- lame-3.97.orig/libmp3lame/i386/fftsse.nas	2000-10-04 14:13:26.000000000 +0200
++++ lame-3.97/libmp3lame/i386/fftsse.nas	2007-02-15 09:14:36.000000000 +0100
+@@ -536,3 +536,7 @@
+ 
+ 
+ 	end
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
+diff -ur lame-3.97.orig/libmp3lame/i386/ffttbl.nas lame-3.97/libmp3lame/i386/ffttbl.nas
+--- lame-3.97.orig/libmp3lame/i386/ffttbl.nas	2000-10-04 14:13:26.000000000 +0200
++++ lame-3.97/libmp3lame/i386/ffttbl.nas	2007-02-15 09:14:38.000000000 +0100
+@@ -76,3 +76,7 @@
+ 	segment_code
+ 
+ 	end
++
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
