@@ -1,19 +1,18 @@
+%define fver 398-2
+
 Name:           lame
-Version:        3.97
-Release:        7%{?dist}
+Version:        3.98.2
+Release:        2%{?dist}
 Summary:        Free MP3 audio compressor
 
 Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            http://lame.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/lame/%{name}-%{version}.tar.gz
-Patch0:         %{name}-as-needed.patch
+Source0:        http://downloads.sourceforge.net/sourceforge/lame/%{name}-%{fver}.tar.gz
 Patch1:         %{name}-noexecstack.patch
+Patch2:         %{name}-pmake.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  gtk+-devel
 # pkg-config should be pulled in by gtk+-devel but is not in EL-5
@@ -55,14 +54,13 @@ This package contains the mp3x frame analyzer.
 
 
 %prep
-%setup -q
-%patch0 -p1 -b .as-needed
+%setup -q -n %{name}-%{fver}
 %patch1 -p1 -b .noexec
-iconv -f ISO-8859-1 -t UTF8 ChangeLog > ChangeLog.tmp && mv ChangeLog.tmp ChangeLog
+%patch2 -p1 -b .pmake
+iconv -f ISO-8859-1 -t UTF8 ChangeLog > ChangeLog.tmp && touch -r ChangeLog ChangeLog.tmp && mv ChangeLog.tmp ChangeLog
 
 
 %build
-autoreconf
 sed -i -e 's/^\(\s*hardcode_libdir_flag_spec\s*=\).*/\1/' configure
 %ifarch %{ix86}
 export CFLAGS="$RPM_OPT_FLAGS -ffast-math"
@@ -82,7 +80,7 @@ make %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+make install INSTALL="install -p" DESTDIR=$RPM_BUILD_ROOT
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 # Some apps still expect to find <lame.h>
 ln -sf lame/lame.h $RPM_BUILD_ROOT%{_includedir}/lame.h
@@ -126,6 +124,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/mp3x
 
 %changelog
+* Mon Oct 20 2008 Dominik Mierzejewski <rpm at greysector.net> - 3.98.2-2
+- update to 3.98.2
+- preserve file timestamps
+- drop obsolete patch
+- no need to call autoreconf anymore
+- fix parallel make builds
+
 * Sun Aug 03 2008 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info - 3.97-7
 - rebuild
 
