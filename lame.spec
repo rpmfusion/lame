@@ -2,7 +2,7 @@
 
 Name:           lame
 Version:        3.98.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Free MP3 audio compressor
 
 Group:          Applications/Multimedia
@@ -124,6 +124,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/mp3x
 
 %changelog
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 3.98.2-3
+- rebuild for new F11 features
+
 * Mon Oct 20 2008 Dominik Mierzejewski <rpm at greysector.net> - 3.98.2-2
 - update to 3.98.2
 - preserve file timestamps
