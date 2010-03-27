@@ -1,14 +1,12 @@
-%define fver 398-2
-
 Name:           lame
-Version:        3.98.2
-Release:        3%{?dist}
+Version:        3.98.3
+Release:        1%{?dist}
 Summary:        Free MP3 audio compressor
 
 Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            http://lame.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/sourceforge/lame/%{name}-%{fver}.tar.gz
+Source0:        http://downloads.sourceforge.net/sourceforge/lame/%{name}-%{version}.tar.gz
 Patch1:         %{name}-noexecstack.patch
 Patch2:         %{name}-pmake.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -54,7 +52,7 @@ This package contains the mp3x frame analyzer.
 
 
 %prep
-%setup -q -n %{name}-%{fver}
+%setup -q
 %patch1 -p1 -b .noexec
 %patch2 -p1 -b .pmake
 iconv -f ISO-8859-1 -t UTF8 ChangeLog > ChangeLog.tmp && touch -r ChangeLog ChangeLog.tmp && mv ChangeLog.tmp ChangeLog
@@ -124,6 +122,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/mp3x
 
 %changelog
+* Sat Feb 27 2010 Dominik Mierzejewski <rpm at greysector.net> - 3.98.3-1
+- update to 3.98.3
+
 * Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 3.98.2-3
 - rebuild for new F11 features
 
