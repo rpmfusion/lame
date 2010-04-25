@@ -1,6 +1,6 @@
 Name:           lame
 Version:        3.98.3
-Release:        1%{?dist}
+Release:        1%{?dist}.1
 Summary:        Free MP3 audio compressor
 
 Group:          Applications/Multimedia
@@ -122,6 +122,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/mp3x
 
 %changelog
+* Sun Apr 25 2010 Dominik Mierzejewski <rpm at greysector.net> - 3.98.3-1.1
+- bump and rebuild to try and fix ppc64 builder problem
+
 * Sat Feb 27 2010 Dominik Mierzejewski <rpm at greysector.net> - 3.98.3-1
 - update to 3.98.3
 
