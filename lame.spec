@@ -1,5 +1,5 @@
 Name:           lame
-Version:        3.98.3
+Version:        3.98.4
 Release:        1%{?dist}
 Summary:        Free MP3 audio compressor
 
@@ -17,9 +17,7 @@ BuildRequires:  gtk+-devel
 BuildRequires:  pkgconfig
 %ifarch %{ix86}
 BuildRequires:  nasm
-BuildRequires:  gcc >= 3.2
 %endif
-Requires:       ncurses >= 5.0
 Requires:       %{name}-libs = %{version}-%{release}
 
 %description
@@ -122,6 +120,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/mp3x
 
 %changelog
+* Tue Jul 06 2010 Dominik Mierzejewski <rpm at greysector.net> - 3.98.4-1
+- update to 3.98.4
+- drop obsolete (build)requirements
+
 * Sat Feb 27 2010 Dominik Mierzejewski <rpm at greysector.net> - 3.98.3-1
 - update to 3.98.3
 
