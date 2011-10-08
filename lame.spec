@@ -1,6 +1,6 @@
 Name:           lame
 Version:        3.98.4
-Release:        1%{?dist}
+Release:        1%{?dist}.1
 Summary:        Free MP3 audio compressor
 
 Group:          Applications/Multimedia
@@ -120,6 +120,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/mp3x
 
 %changelog
+* Sat Oct 08 2011 Nicolas Chauvet <kwizart@gmail.com> - 3.98.4-1.1
+- Rebuilt for target i686
+
 * Tue Jul 06 2010 Dominik Mierzejewski <rpm at greysector.net> - 3.98.4-1
 - update to 3.98.4
 - drop obsolete (build)requirements
