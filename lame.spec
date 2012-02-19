@@ -1,5 +1,5 @@
 Name:           lame
-Version:        3.98.4
+Version:        3.99.4
 Release:        1%{?dist}
 Summary:        Free MP3 audio compressor
 
@@ -8,7 +8,6 @@ License:        GPLv2+
 URL:            http://lame.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/sourceforge/lame/%{name}-%{version}.tar.gz
 Patch1:         %{name}-noexecstack.patch
-Patch2:         %{name}-pmake.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  ncurses-devel
@@ -52,8 +51,6 @@ This package contains the mp3x frame analyzer.
 %prep
 %setup -q
 %patch1 -p1 -b .noexec
-%patch2 -p1 -b .pmake
-iconv -f ISO-8859-1 -t UTF8 ChangeLog > ChangeLog.tmp && touch -r ChangeLog ChangeLog.tmp && mv ChangeLog.tmp ChangeLog
 
 
 %build
@@ -68,8 +65,7 @@ export CFLAGS="$RPM_OPT_FLAGS -ffast-math"
   --enable-nasm \
 %endif
   --enable-mp3x \
-  --enable-mp3rtp \
-  --enable-decode-layer1
+  --enable-mp3rtp
 
 make %{?_smp_mflags}
 
@@ -98,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr (-,root,root,-)
-%doc README TODO USAGE doc/html/*.html doc/html/*.css
+%doc README TODO USAGE doc/html/*.html
 %{_bindir}/lame
 %{_bindir}/mp3rtp
 %{_mandir}/man1/lame.1*
@@ -120,6 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/mp3x
 
 %changelog
+* Sun Feb 19 2012 Nicolas Chauvet <kwizart@gmail.com> - 3.99.4-1
+- Update to 3.99.4
+
 * Tue Jul 06 2010 Dominik Mierzejewski <rpm at greysector.net> - 3.98.4-1
 - update to 3.98.4
 - drop obsolete (build)requirements
