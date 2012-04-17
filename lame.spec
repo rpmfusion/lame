@@ -1,5 +1,5 @@
 Name:           lame
-Version:        3.99.4
+Version:        3.99.5
 Release:        1%{?dist}
 Summary:        Free MP3 audio compressor
 
@@ -116,6 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/mp3x
 
 %changelog
+* Tue Apr 17 2012 Matthias Saou <matthias@saou.eu> 3.99.5-1
+- Update to 3.99.5.
+
 * Sun Feb 19 2012 Nicolas Chauvet <kwizart@gmail.com> - 3.99.4-1
 - Update to 3.99.4
 
@@ -229,7 +232,7 @@ rm -rf $RPM_BUILD_ROOT
 - Backed out Vorbis changes (bug 198, 223).
 
 * Fri May  2 2003 Marius Jøhndal <mariuslj at ifi.uio.no> 0:3.93.1-0.fdr.4
-- Fixed problems with Makefiles being removed from documentation upon 
+- Fixed problems with Makefiles being removed from documentation upon
   installation.
 
 * Fri Apr 25 2003 Marius Jøhndal <mariuslj at ifi.uio.no> 0:3.93.1-0.fdr.3
@@ -239,7 +242,7 @@ rm -rf $RPM_BUILD_ROOT
 
 * Fri Apr  4 2003 Marius Jøhndal <mariuslj at ifi.uio.no> 0:3.93.1-0.fdr.2
 - Minor adjustments of optimisation flags and configure settings.
-- Killed some noise caused by a bad gtk macro. 
+- Killed some noise caused by a bad gtk macro.
 - Added epoch numbers to requires.
 
 * Wed Apr  2 2003 Marius Jøhndal <mariuslj at ifi.uio.no> 0:3.93.1-0.fdr.1
