@@ -1,6 +1,6 @@
 Name:           lame
 Version:        3.99.5
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Free MP3 audio compressor
 
 Group:          Applications/Multimedia
@@ -57,6 +57,8 @@ This package contains the mp3x frame analyzer.
 sed -i -e 's/^\(\s*hardcode_libdir_flag_spec\s*=\).*/\1/' configure
 %ifarch %{ix86}
 export CFLAGS="$RPM_OPT_FLAGS -ffast-math"
+#From LFS:http://www.linuxfromscratch.org/blfs/view/svn/multimedia/lame.html
+sed -i -e '/xmmintrin\.h/d' configure
 %endif
 %configure \
   --disable-dependency-tracking \
@@ -116,8 +118,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/mp3x
 
 %changelog
-* Sat Dec 06 2014 Nicolas Chauvet <kwizart@gmail.com> - 3.99.5-4
-- Rebuilt for F-21
+* Sun Dec 07 2014 Nicolas Chauvet <kwizart@gmail.com> - 3.99.5-5
+- Fix FTBFS on i686
 
 * Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 3.99.5-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
