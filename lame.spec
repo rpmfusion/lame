@@ -121,6 +121,9 @@ rm -rf $RPM_BUILD_ROOT
 * Sun Dec 07 2014 Nicolas Chauvet <kwizart@gmail.com> - 3.99.5-5
 - Fix FTBFS on i686
 
+* Sat Dec 06 2014 Nicolas Chauvet <kwizart@gmail.com> - 3.99.5-4
+- Rebuilt for F-21
+
 * Sun Aug 31 2014 Sérgio Basto <sergio@serjux.com> - 3.99.5-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
