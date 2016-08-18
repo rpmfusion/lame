@@ -1,6 +1,6 @@
 Name:           lame
 Version:        3.99.5
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Free MP3 audio compressor
 
 Group:          Applications/Multimedia
@@ -8,7 +8,6 @@ License:        GPLv2+
 URL:            http://lame.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/sourceforge/lame/%{name}-%{version}.tar.gz
 Patch1:         %{name}-noexecstack.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  ncurses-devel
 BuildRequires:  gtk+-devel
@@ -49,8 +48,7 @@ This package contains the mp3x frame analyzer.
 
 
 %prep
-%setup -q
-%patch1 -p1 -b .noexec
+%autosetup -p1
 
 
 %build
@@ -69,16 +67,15 @@ sed -i -e '/xmmintrin\.h/d' configure
   --enable-mp3x \
   --enable-mp3rtp
 
-make %{?_smp_mflags}
+%make_build
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install INSTALL="install -p" DESTDIR=$RPM_BUILD_ROOT
-rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
+%make_install INSTALL="install -p"
+rm -f %{buildroot}%{_libdir}/*.la
 # Some apps still expect to find <lame.h>
-ln -sf lame/lame.h $RPM_BUILD_ROOT%{_includedir}/lame.h
-rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
+ln -sf lame/lame.h %{buildroot}%{_includedir}/lame.h
+rm -rf %{buildroot}%{_docdir}/%{name}
 
 
 %check
@@ -90,34 +87,29 @@ make test
 %postun libs -p /sbin/ldconfig
 
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-
 %files
-%defattr (-,root,root,-)
 %doc README TODO USAGE doc/html/*.html
 %{_bindir}/lame
 %{_bindir}/mp3rtp
 %{_mandir}/man1/lame.1*
 
 %files libs
-%defattr(-,root,root,-)
-%doc ChangeLog COPYING LICENSE
+%doc ChangeLog
+%license COPYING LICENSE
 %{_libdir}/libmp3lame.so.*
 
 %files devel
-%defattr (-,root,root,-)
 %doc API HACKING STYLEGUIDE
 %{_libdir}/libmp3lame.so
-%{_includedir}/lame/
-%{_includedir}/lame.h
+%{_includedir}/lame
 
 %files mp3x
-%defattr (-,root,root,-)
 %{_bindir}/mp3x
 
 %changelog
+* Thu Aug 18 2016 Sérgio Basto <sergio@serjux.com> - 3.99.5-6
+- Clean spec, Vascom patches series, rfbz #4201, add license tag
+
 * Sun Dec 07 2014 Nicolas Chauvet <kwizart@gmail.com> - 3.99.5-5
 - Fix FTBFS on i686
 
