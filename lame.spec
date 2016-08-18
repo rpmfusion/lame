@@ -102,6 +102,7 @@ make test
 %doc API HACKING STYLEGUIDE
 %{_libdir}/libmp3lame.so
 %{_includedir}/lame
+%{_includedir}/lame.h
 
 %files mp3x
 %{_bindir}/mp3x
