@@ -1,6 +1,6 @@
 Name:           lame
 Version:        3.99.5
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Free MP3 audio compressor
 
 Group:          Applications/Multimedia
@@ -108,6 +108,9 @@ make test
 %{_bindir}/mp3x
 
 %changelog
+* Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 3.99.5-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Thu Aug 18 2016 Sérgio Basto <sergio@serjux.com> - 3.99.5-6
 - Clean spec, Vascom patches series, rfbz #4201, add license tag
 
